@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="InputView" >
+            <attr name="input_icon" format="reference"></attr>
+            <attr name="input_hint" format="string"></attr>
+            <attr name="input_cipher" format="boolean"></attr>
+    </declare-styleable>
+</resources>
