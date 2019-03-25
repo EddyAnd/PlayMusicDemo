@@ -20,7 +20,6 @@ public class RegisterActivity extends AppCompatActivity {
     @Override
     public void finish() {
         super.finish();
-       // overridePendingTransition(R.anim.close_enter, R.anim.close_exit);
     }
 
     public void toBackLogin(View view) {
