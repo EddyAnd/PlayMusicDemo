@@ -7,6 +7,7 @@
     android:orientation="vertical"
     tools:context=".activitys.MainActivity">
     <com.example.playmusicdemo.views.InputView
+        android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="100dp"
@@ -22,4 +23,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="toRegister"/>
+    <Button
+        android:text="test1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="OpenCameraOne"/>
+    <Button
+        android:text="test2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="OpenCameraTwo"/>
+    <ImageView
+        android:id="@+id/show_one_image"
+        android:layout_width="match_parent"
+        android:layout_height="150dp" />
+
+    <ImageView
+        android:id="@+id/show_two_image"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginTop="10dp"/>
 </LinearLayout>
