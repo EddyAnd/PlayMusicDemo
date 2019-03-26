@@ -27,15 +27,9 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            <!--<intent-filter >-->
-                <!--<action android:name="android.media.action.IMAGE_CAPTURE"/>-->
-                <!--<category android:name="android.intent.category.DEFAULT"/>-->
-            <!--</intent-filter>-->
+
         </activity>
-        <activity android:name=".activitys.RegisterActivity"
-                 ></activity>
         <activity android:name=".activitys.CustomCamera"/>
-        <activity android:name=".activitys.ResultActivity"/>
     </application>
 
 </manifest>

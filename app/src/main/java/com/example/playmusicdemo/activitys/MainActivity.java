@@ -50,12 +50,7 @@ public class MainActivity extends AppCompatActivity {
         startCameraTask();
     }
 
-    public void toRegister(View view) {
-        Intent intent = new Intent(this,RegisterActivity.class);
-        startActivity(intent);
-       // overridePendingTransition(R.anim.open_enter, R.anim.open_exit);
 
-    }
 
     public void OpenCameraOne(View view) {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -134,32 +129,33 @@ public class MainActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
+        }else if (requestCode == 3 && data != null){
+          //  String    mPath = Environment.getExternalStorageDirectory().getPath()+"/"+"temp520.png";
+            String mPath = data.getStringExtra("path");
+            Log.e("====图片地址=",mPath);
+            FileInputStream fileInputStream = null;
+            try {
+                fileInputStream = new FileInputStream(mPath);
+                Bitmap bitmap = BitmapFactory.decodeStream(fileInputStream);
+                Matrix matrix = new Matrix();
+                matrix.setRotate(90);
+                bitmap = Bitmap.createBitmap(bitmap,0,0,bitmap.getWidth(),bitmap.getHeight(),matrix,true);
+                mThreeImageView.setImageBitmap(bitmap);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }finally {
+                try {
+                    if(fileInputStream != null){
+                        fileInputStream.close();
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
-//        else if (requestCode == 3 && data != null){
-//            String mPath = data.getStringExtra("path");
-//            FileInputStream fileInputStream = null;
-//            try {
-//                fileInputStream = new FileInputStream(mPath);
-//                Bitmap bitmap = BitmapFactory.decodeStream(fileInputStream);
-//                Matrix matrix = new Matrix();
-//                matrix.setRotate(90);
-//                bitmap = Bitmap.createBitmap(bitmap,0,0,bitmap.getWidth(),bitmap.getHeight(),matrix,true);
-//                mThreeImageView.setImageBitmap(bitmap);
-//            } catch (FileNotFoundException e) {
-//                e.printStackTrace();
-//            }finally {
-//                try {
-//                    if(fileInputStream != null){
-//                        fileInputStream.close();
-//                    }
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        }
     }
 
     public void OpenCameraThree(View view) {
-        startActivity(new Intent(this,CustomCamera.class));
+        startActivityForResult(new Intent(this,CustomCamera.class),3);
     }
 }

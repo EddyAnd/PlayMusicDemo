@@ -9,6 +9,7 @@ import android.hardware.Camera;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
@@ -47,9 +48,10 @@ public class CustomCamera extends Activity implements SurfaceHolder.Callback {
                     e.printStackTrace();
                 }
             }
-            Intent intent = new Intent(CustomCamera.this,ResultActivity.class);
-            intent.putExtra("path",mPath);
-            startActivity(intent);
+            Intent intent = new Intent();
+            intent.putExtra("path", mPath); //将计算的值回传回去
+            setResult(2, intent);//resultCode只要大于1即可
+            finish();
         }
     };
     @Override
@@ -137,18 +139,20 @@ public class CustomCamera extends Activity implements SurfaceHolder.Callback {
     }
 
     public void startCapture(View view) {
-        Camera.Parameters parameters = mCamera.getParameters();
-        parameters.setPictureFormat(ImageFormat.JPEG);
-        parameters.setPreviewSize(800,400);
-        parameters.setFocusMode(Camera.Parameters.FLASH_MODE_AUTO);
-        mCamera.autoFocus(new Camera.AutoFocusCallback(){
+        if (mCamera != null) {
+            Camera.Parameters parameters = mCamera.getParameters();
+            parameters.setPictureFormat(ImageFormat.JPEG);
+            parameters.setPreviewSize(800, 400);
+            parameters.setFocusMode(Camera.Parameters.FLASH_MODE_AUTO);
+            mCamera.autoFocus(new Camera.AutoFocusCallback() {
 
-            @Override
-            public void onAutoFocus(boolean success, Camera camera) {
-                if(success){
-                    mCamera.takePicture(null,null,pictureCallback);
+                @Override
+                public void onAutoFocus(boolean success, Camera camera) {
+                    if (success) {
+                        mCamera.takePicture(null, null, pictureCallback);
+                    }
                 }
-            }
-        });
+            });
+        }
     }
 }
