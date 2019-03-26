@@ -13,18 +13,22 @@
         android:layout_marginTop="100dp"
         app:input_icon="@mipmap/password"
         app:input_hint="密码"
-        app:input_cipher="true">
+        app:input_cipher="true"
+        android:visibility="gone">
 
     </com.example.playmusicdemo.views.InputView>
-    <View style="@style/line" ></View>
+    <View style="@style/line"
+        android:visibility="gone"></View>
 
     <Button
         android:text="注册"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="toRegister"/>
+        android:onClick="toRegister"
+        android:visibility="gone"/>
     <Button
         android:text="test1"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="OpenCameraOne"/>
@@ -33,6 +37,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="OpenCameraTwo"/>
+    <Button
+        android:text="Test_Custom_Camera"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="OpenCameraThree"/>
     <ImageView
         android:id="@+id/show_one_image"
         android:layout_width="match_parent"
@@ -40,6 +49,11 @@
 
     <ImageView
         android:id="@+id/show_two_image"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginTop="10dp"/>
+    <ImageView
+        android:id="@+id/show_three_image"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_marginTop="10dp"/>
